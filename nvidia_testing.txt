@@ -1,0 +1,39 @@
+
+"@KerbalSpaceP I have, but my gaming laptop which is slightly above low requirements still suffers performance issues, I have a acer Nitro 5 Intel Core I 9th gen with NVIDIA GeForce GTX 1650 and 32GB RAM and bearly get 15fps, all drivers up to date and latest windows update and still no go." <L>0</L>
+@DarkVenom407 @swampdonkey666x @CallofDuty I’m having the same issues here as well…I have even reverted old NVIDIA drivers and windows update still nothing…even reinstalled the whole game…getting beyond a joke now <L>0</L>
+"@adrinalynn4 Nvidia Broadcast stopped working well for me a while back, since I uninstalled it I stopped having issues, so if you've got that, might be worth a look at?" <L>-</L>
+"Introducing the #Lenovo ThinkStation P360 Ultra with NVIDIA RTX - Redefining the power of small! 🙌 Check it out in this video. If you'd like to learn more and order yours today, I.M Services NV is here to help. https://t.co/ULkpdAboQj" <L>+</L>
+Nvidia CEO Jensen Huang talks about his big bet on A.I. in full interview - CNBC https://t.co/feu1siQoG2  <L>0</L>
+@AMDGPU_ The 513.29 drivers are perfectly fine… unlike AMD’s latest. At least I don’t need to worry about my Windows install getting corrupted with Nvidia’s drivers. <L>-</L>
+"@KeenSWH So since I can't make it to the GDC to ask this question, I'm gonna ask here. Is Vrage3 being developed to utilize video technologies from Nvidia and AMD, such as DLSS and FSR? Inquiring minds want to know." <L>0</L>
+"Screw it we’re launching it a day early! 
+
+Check out our new gaming laptop refresh featuring Intel 13th-gen and Nvidia 40-series graphics cards!
+
+Look I made it easy👇
+
+👇👇👇👇👇👇👇👇👇👇👇👇👇👇
+👉     https://t.co/Q61ZqtGHgV   👈
+👆👆👆👆👆👆👆👆👆👆👆👆👆👆 https://t.co/TA7wjbR3e9"  <L>0</L>
+"In anticipation of using the #Nvidia SDK manager (which aim to simplify the downloading/setup of devices and images)
+
+I've plugged a Jetson Nano 2 Gb into to an old Compaq 6000 Pro (about 13 years old and still functional), to do a few tests before playing with the #XavierNX 😳😅 https://t.co/wjXqOPD70O" <L>0</L>
+"PSA: don't run @Intel Arc GPUs in Windows systems with other GPUs (i.e. @nvidia) - Arc drivers cause a memory leak in Desktop Window Manager, even if you aren't driving monitors with the Arc.
+
+I tried disabling the Arc GPU and my idle memory utilization went from 99% -&gt; 60%."  <L>0</L>
+"Through no particular reason, I have a 6900XT in my system now.
+so I am AMD for a while, at least until @Nvidia wakes up."  <L>-</L>
+"I think NVIDIA should consider filing a restraining order
+$NVDA https://t.co/zCmAVBP2sa" <L>0</L>
+"Finally, I upgraded my pc!! My viewer gave me the motherboard and RAMs :) New spec: B450 AORUS PRO WIFI Gaming Motherboard, AMD Ryzen 5 3600X CPU, 8.00 GB RAM, NVIDIA GeForce GTX1050Ti https://t.co/sqCM6zQK4l"  <L>0</L>
+"@JimH535 @Lat_Bell_TX But without regret. I have mentors that occasionally mention their regrets for not investing (or investing more) in Apple, Amazon, Tesla, Monster bev.,  Netflix, Nvidia."  <L>0</L>
+@VideoCardz I’m never buying an nvidia gpu ever again <L>-</L>
+@BoredSoloDev @_crassh I am pretty sure Nvidia and other AI chip makers are happy the way things are going right now.  <L>+</L>
+"@Teknium1 @blovereviews I use OpenCL and WebGL, which both work on many cards including nvidia cards, and do not require nvidia's permission. Are they trying to sneak in authority between the GPU and the opensource, where they control who is allowed to use the opensource and for what?" <L>0</L>
+Nvidia CEO Jensen Huang On How His Big Bet On A.I. Is Finally Paying Off... https://t.co/CZTBeaOC3t via @YouTube  <L>+</L>
+@scrumtuous @alexfwulf Yeah that's wierd. Unless it was Nvidia because God damn Nvidia. I just avoid Nvidia on purpose and have has a flawless Linux experience since <L>-</L>
+"This will be interesting for our Twitter #AI community. @nvidia's CEO Jensen Huang to deliver keynote from the GTC Developer Conference. 
+
+I'm sure we'll learn something interesting here given the upcoming demand for GPUs!
+
+https://t.co/QN2Whhrmbq" <L>0</L>
