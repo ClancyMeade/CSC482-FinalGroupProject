@@ -11,10 +11,8 @@ def fetchData(brandName): #fetch 100 most recent tweets with brand name and I in
             break 
         else: 
             tweets.append([tweet.content])
-        #tweets.append([tweet.date, tweet.id, tweet.url, tweet.user.username, tweet.sourceLabel, tweet.user.location, tweet.content, tweet.likeCount, tweet.retweetCount])
-    #df = pd.DataFrame(tweets, columns = ['Date', 'ID', 'url', 'username', 'source', 'location', 'tweet', 'num_of_likes', 'num_of_retweet'])
     df = pd.DataFrame(tweets, columns = ['Content'])
-    df.to_csv('nvidia.csv', mode = 'a', header=False, index=False)
+    df.to_csv(brandName+".txt", mode = 'a', header=False, index=False) #can comment out index=False 
 
 def randomize_training(brandName): # run this ONCE to separate training and testing files
     f = open(brandName+".txt", 'r')
