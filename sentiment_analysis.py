@@ -16,12 +16,13 @@ import numpy as np
 VECTOR_LENGTH = 100 
 
 class SentimentAnalizer: 
-    def __init__(self): 
-        self.nvidia_word_indexes = {} # Unique indexes of each word: key = word, val = unique index
-        self.nvidia_embeddings = {} # Embeddings of each word: key = word, val = vector 
-        self.nvidia_index = 0 # Counter used to create unique indexes for words 
-        self.nvidia_max_seq_len = 0 # Maximum length of a tweet in the training set 
-        self.nvidia_NN = None
+    def __init__(self, brand): 
+        self.brand = brand # the brand name 
+        self.word_indexes = {} # Unique indexes of each word: key = word, val = unique index
+        self.embeddings = {} # Embeddings of each word: key = word, val = vector 
+        self.index = 0 # Counter used to create unique indexes for words 
+        self.max_seq_len = 0 # Maximum length of a tweet in the training set 
+        self.NN = None
 
     # Returns cleaned text 
     def get_cleaned_tweet(self, text): 
@@ -63,12 +64,12 @@ class SentimentAnalizer:
                     if to_add not in stopwords.words(): # Remove stopwords 
                         tokens.append(to_add) 
                         # Keep track of unique words as we go so we don't have to do it later 
-                        if to_add not in self.nvidia_word_indexes:
-                            self.nvidia_word_indexes[to_add] = self.nvidia_index
-                            self.nvidia_index += 1 # Unique index of unique word
+                        if to_add not in self.word_indexes:
+                            self.word_indexes[to_add] = self.index
+                            self.index += 1 # Unique index of unique word
                 tokenized_data.append([tokens, label])
                 # Keep track of the length of the longest tweet 
-                self.nvidia_max_seq_len = max(self.nvidia_max_seq_len, len(tokens))
+                self.max_seq_len = max(self.max_seq_len, len(tokens))
         return tokenized_data
     
     
@@ -82,11 +83,11 @@ class SentimentAnalizer:
         return padded_sequence
     
     
-    # Trains a Convolutional Neural Network on tweets about nvidia 
-    def train_nvidia(self): 
+    # Trains a Convolutional Neural Network on tweets about the brand 
+    def train(self): 
         # Get training and testing data and clean all the tweets
-        training_data = get_data.get_training_data('nvidia')
-        testing_data = get_data.get_testing_data('nvidia')        
+        training_data = get_data.get_training_data(self.brand)
+        testing_data = get_data.get_testing_data(self.brand)
         for tweet in training_data: 
             tweet[0] = self.get_cleaned_tweet(tweet[0])
         for tweet in testing_data: 
@@ -94,8 +95,8 @@ class SentimentAnalizer:
 
         # Tokenize the training tweets and get their embeddings 
         tokenized_tweets = self.get_tokens(training_data)
-        self.nvidia_embeddings = embeddings.get_embedding_dict(
-            self.nvidia_word_indexes, 
+        self.embeddings = embeddings.get_embedding_dict(
+            self.word_indexes, 
             vector_length=VECTOR_LENGTH
         ) 
         
@@ -109,10 +110,10 @@ class SentimentAnalizer:
             index_sequence = []
             # Convert sequence of tokens to its encoded sequence of number (unique indexes stored in dict)
             for word in tweet_words: 
-                word_index = self.nvidia_word_indexes[word]
+                word_index = self.word_indexes[word]
                 index_sequence.append(word_index)
             # Pad the sequence of numbers 
-            padded_index_sequence = self.get_padded_sequence(index_sequence, self.nvidia_max_seq_len)
+            padded_index_sequence = self.get_padded_sequence(index_sequence, self.max_seq_len)
             padded_training_data.append(padded_index_sequence)
             # Convert labels to numbers 
             if tweet_label == "+": 
@@ -125,7 +126,7 @@ class SentimentAnalizer:
         print(len(labels))
         
         # Get embedding matrix 
-        total_words = len(self.nvidia_word_indexes)
+        total_words = len(self.word_indexes)
         embedding_matrix = np.zeros((total_words, VECTOR_LENGTH)) # Creates matrix of zeros of size total_words x vectorlen
         print(len(embedding_matrix))
         print(len(embedding_matrix[0]))
@@ -133,31 +134,33 @@ class SentimentAnalizer:
         # Store the embeddings for each word at their corresponding index in the embedding_matrix  
         # This matrix is used as initial weights in the NN 
         # The indexes of each vector correspond to the sequence of numbers (corresponding to words) in padded_training_data
-        for word, index in self.nvidia_word_indexes.items(): 
-            embedding_vector = self.nvidia_embeddings[word]
+        for word, index in self.word_indexes.items(): 
+            embedding_vector = self.embeddings[word]
             embedding_matrix[index] = embedding_vector
         
         # Build the model: Convolutional Neural Net 
         labels = np.array(labels)
         padded_training_data = np.array(padded_training_data)
         
-        nvidia_model = Sequential() 
+        model = Sequential() 
         # Embedding layer -> word embeddings are initial weights 
         embedding_layer = Embedding(total_words, VECTOR_LENGTH, 
                                     weights=[embedding_matrix],
-                                    input_length=self.nvidia_max_seq_len)            
-        nvidia_model.add(embedding_layer)  
-        nvidia_model.add(Conv1D(100, 5, activation='relu')) 
-        nvidia_model.add(MaxPooling1D(5)) 
-        nvidia_model.add(Flatten())
-        nvidia_model.add(Dense(units=100, activation='relu')) 
-        nvidia_model.add(Dense(units=1, activation='sigmoid')) 
-        nvidia_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-        print(nvidia_model.summary())
-        nvidia_model.fit(padded_training_data, labels, epochs=4, verbose=1)
-        self.nvidia_NN = nvidia_model
+                                    input_length=self.max_seq_len)            
+        model.add(embedding_layer)
+        model.add(Conv1D(100, 5, activation='relu')) 
+        model.add(MaxPooling1D(5))
+        model.add(Flatten())
+        model.add(Dense(units=100, activation='relu'))
+        model.add(Dense(units=1, activation='sigmoid'))
+        model.compile(optimizer='adam',
+                      loss='binary_crossentropy', metrics=['accuracy'])
+        print(model.summary())
+        model.fit(padded_training_data, labels, epochs=4, verbose=1)
+        self.NN = model
 
-        loss, accuracy = nvidia_model.evaluate(padded_training_data, labels, verbose=1)
+        loss, accuracy = model.evaluate(
+            padded_training_data, labels, verbose=1)
         print('Accuracy: %f' % (accuracy*100))
         
         # This does not test the model yet 
@@ -174,7 +177,6 @@ class SentimentAnalizer:
             # activation functions 
         # Try other types of networks: 
             # Feed Forward NN (the code will be different though, so maybe we just use this one)
-        # Alter the code above to create models for each of the brands 
         # Create functions to use the models to classify tweets 
         # Create functions to store the trained models to files and functions to restore them 
         # Could make a function that extracts features (encoded words and their embeddings) (what the code above does, but just make it work for multiple brands)
@@ -190,8 +192,10 @@ class SentimentAnalizer:
                 
 
 def main():
-    sa = SentimentAnalizer()
-    sa.train_nvidia()
+    nvidia_sa = SentimentAnalizer("nvidia")
+    nvidia_sa.train()
+    microsoft_sa = SentimentAnalizer("microsoft")
+    microsoft_sa.train()
 
 if __name__ == "__main__": 
     main()
