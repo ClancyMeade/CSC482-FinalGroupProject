@@ -1,10 +1,10 @@
 # CSC482-FinalGroupProject
 
-Downloading Embeddings: 
+## Downloading Embeddings: 
 - python3 embeddings.py
 
-Training All Models: 
+## Training All Models: 
 - python3 sentiment_analytsis.py -train
 
-Testing All Model: 
+## Testing All Model: 
 - python3 sentiment_analysis.py -test
