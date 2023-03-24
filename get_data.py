@@ -4,6 +4,17 @@ import string
 from textblob import TextBlob 
 import pandas as pd
 
+def get_recent_tweets(brandName, count):
+    query = "lang:en "+brandName+ " I"
+    tweets = []
+    for i, tweet in enumerate(sntwitter.TwitterSearchScraper(query).get_items()):
+        if i >= count: 
+            break 
+        else: 
+            tweets.append([tweet.content])
+    return tweets
+    df = pd.DataFrame(tweets, columns = ['Content'])
+
 def fetchData(brandName): #fetch 100 most recent tweets with brand name and I in it 
     query = "lang:en "+brandName+ " I"
     tweets = []

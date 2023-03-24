@@ -3,27 +3,29 @@ from dash import dcc, html
 import plotly.express as px
 import pandas as pd
 import seaborn as sns
+from sentiment_analysis import analyze
+
 app = dash.Dash()
 df = sns.load_dataset('titanic')
 
 data_nvidia = pd.DataFrame({
     'Category': ['Good', 'Bad', 'Neutral'],
-    'Value': [20, 30, 50]
+    'Value': analyze("nvidia")
 })
 
 data_adobe = pd.DataFrame({
     'Category': ['Good', 'Bad', 'Neutral'],
-    'Value': [20, 30, 50]
+    'Value': analyze("adobe")
 })
 
 data_iFixIt = pd.DataFrame({
     'Category': ['Good', 'Bad', 'Neutral'],
-    'Value': [20, 30, 50]
+    'Value': analyze("iFixit")
 })
 
 data_microsoft = pd.DataFrame({
     'Category': ['Good', 'Bad', 'Neutral'],
-    'Value': [20, 30, 50]
+    'Value': analyze("microsoft")
 })
 
 # Create a pie chart using Plotly Express
@@ -38,9 +40,9 @@ dcc.Graph(id="nvidia", figure=fig_nvidia),
 html.H1(children='Adobe Twitter Sentiment'),
 dcc.Graph(id="adobe", figure=fig_adobe),
 html.H1(children='iFixIt Twitter Sentiment'),
-dcc.Graph(id="iFixIt", figure=fig_adobe),
+dcc.Graph(id="iFixIt", figure=fig_iFixIt),
 html.H1(children='Microsoft Twitter Sentiment'),
-dcc.Graph(id="Microsoft", figure=fig_adobe)])
+dcc.Graph(id="Microsoft", figure=fig_microsoft)])
 
 if __name__ == "__main__":
     app.run_server(debug=True)
