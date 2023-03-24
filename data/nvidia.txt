@@ -182,5 +182,3 @@ I give free career advice to computational science folks looking at govt and ind
 
 @OpenAI is going to need A LOT more $NVDA hardware as it becomes mainstream. With all the new AI tools and use cases cropping up, I can foresee demand soon exceeding supply for Nvidia GPUs." <L>0</L>
 "This week is going to be hectic. The BS with school classes,work and a midterm due this weekend but also the Nvidia GTC conference is all week. Man do I like handfuls 😂" <L>+</L>
-
-
