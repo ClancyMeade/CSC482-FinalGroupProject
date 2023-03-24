@@ -12,7 +12,7 @@ from keras import utils
 from sklearn.model_selection import KFold
 import numpy as np
 import sys 
-
+from get_data import get_recent_tweets
 # Number of dimensions in embeddings 
 VECTOR_LENGTH = 100 
 POSITIVE_SENTIMENT = 1
@@ -320,7 +320,13 @@ class SentimentAnalyzer:
                 counts[2] += 1
         return counts 
         
-        
+ # Trains all the models and tests them 
+def analyze(brandName):
+    sa = SentimentAnalyzer(brandName, True)
+    sa.load_model()
+    tweets = get_recent_tweets(brandName, 1000)
+    return sa.classify_tweets(tweets)
+
 # Trains all the models and tests them 
 def train_all():
     nvidia_sa = SentimentAnalyzer("nvidia", True)
