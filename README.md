@@ -8,6 +8,6 @@
 - Command: 
 `python3 sentiment_analysis.py -train`
 
-## Testing All Model: 
+## Testing All Models: 
 - Command: 
 `python3 sentiment_analysis.py -test`
