@@ -6,7 +6,7 @@
 
 ## Training All Models: 
 - Command: 
-`python3 sentiment_analytsis.py -train`
+`python3 sentiment_analysis.py -train`
 
 ## Testing All Model: 
 - Command: 
