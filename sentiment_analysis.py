@@ -300,9 +300,7 @@ class SentimentAnalyzer:
         counts = [0, 0, 0]
         cleaned_tweets = []
         for tweet in tweets: 
-            print(tweet)
             cleaned_tweets.append([self.get_cleaned_tweet(tweet), None])                            
-        print(cleaned_tweets)
         # Tokenize the testing tweets
         tokenized_tweets = self.get_tokens(cleaned_tweets, training=False)
         # Convert tokenized tweets to their encoded sequences (sequences of unique indexes)
@@ -324,8 +322,11 @@ class SentimentAnalyzer:
 def analyze(brandName):
     sa = SentimentAnalyzer(brandName, True)
     sa.load_model()
-    tweets = get_recent_tweets(brandName, 1000)
-    return sa.classify_tweets(tweets)
+    tweets = get_recent_tweets(brandName, 10)
+    all_tweets = []
+    for tweet in tweets: 
+        all_tweets.append(tweet[0])
+    return sa.classify_tweets(all_tweets)
 
 # Trains all the models and tests them 
 def train_all():

@@ -40,9 +40,9 @@ dcc.Graph(id="nvidia", figure=fig_nvidia),
 html.H1(children='Adobe Twitter Sentiment'),
 dcc.Graph(id="adobe", figure=fig_adobe),
 html.H1(children='iFixIt Twitter Sentiment'),
-dcc.Graph(id="iFixIt", figure=fig_adobe),
+dcc.Graph(id="iFixIt", figure=fig_iFixIt),
 html.H1(children='Microsoft Twitter Sentiment'),
-dcc.Graph(id="Microsoft", figure=fig_adobe)])
+dcc.Graph(id="Microsoft", figure=fig_microsoft)])
 
 if __name__ == "__main__":
     app.run_server(debug=True)
