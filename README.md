@@ -11,3 +11,6 @@
 
 ## Testing All Models: 
 - `python3 sentiment_analysis.py -test`
+
+## Running The Dashboard
+- `python3 app.py`
