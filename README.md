@@ -1,8 +1,7 @@
 # CSC482-FinalGroupProject
 
 ## Downloading Embeddings: 
--  
-`python3 embeddings.py`
+- `python3 embeddings.py`
 
 ## Training All Models: 
 - To run with k-fold: 
