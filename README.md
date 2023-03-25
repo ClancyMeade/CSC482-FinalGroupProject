@@ -1,11 +1,13 @@
 # CSC482-FinalGroupProject
 
 ## Downloading Embeddings: 
-- Command: 
+-  
 `python3 embeddings.py`
 
 ## Training All Models: 
-- Command: 
+- To run with k-fold: 
+`python3 sentiment_analysis.py -train -k`
+- To run without k-fold: 
 `python3 sentiment_analysis.py -train`
 
 ## Testing All Models: 
