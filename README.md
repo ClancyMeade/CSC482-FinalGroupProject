@@ -10,5 +10,4 @@
 `python3 sentiment_analysis.py -train`
 
 ## Testing All Models: 
-- Command: 
-`python3 sentiment_analysis.py -test`
+- `python3 sentiment_analysis.py -test`
