@@ -1,4 +1,5 @@
 # CSC482-FinalGroupProject
+- In this project we created a sentiment classifier to analyze current sentiment toward different tech companies based on recent tweets about them. 
 
 ## Downloading Embeddings: 
 - `python3 embeddings.py`
