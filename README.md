@@ -6,6 +6,12 @@
     - Then train, test, or run the dashboard
     - NOTE: Training is not required to run the dashboard, the pre-trained models are stored in the models directory and will be loaded automatically 
 
+## Our Team
+- Clancy Meade 
+- Sumukhi Pandey 
+- Dane Potter 
+- Divya Satrawada
+
 ## Packages: 
 - nltk
 - numpy 
