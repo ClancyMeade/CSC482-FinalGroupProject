@@ -15,3 +15,4 @@
 ## Running The Dashboard
 - `python3 app.py n`
 - Where n is the number of tweets to fetch
+- If n is not given, the default is 10
