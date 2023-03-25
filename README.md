@@ -11,6 +11,9 @@
 - numpy 
 - keras 
 - sklearn 
+- snscrape 
+- pandas 
+- dash 
 
 ## Downloading Embeddings: 
 - `python3 embeddings.py`
