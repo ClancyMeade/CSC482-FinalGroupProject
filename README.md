@@ -13,5 +13,5 @@
 - `python3 sentiment_analysis.py -test`
 
 ## Running The Dashboard
-- `python3 app.py` n
-- Where n is the number of tweets to look at 
+- `python3 app.py n`
+- Where n is the number of tweets to fetch
