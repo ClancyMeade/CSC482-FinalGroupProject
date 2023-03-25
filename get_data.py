@@ -11,7 +11,7 @@ def get_recent_tweets(brandName, count):
         if i >= count: 
             break 
         else: 
-            tweets.append([tweet.content])
+            tweets.append([tweet.rawContent])
     return tweets
     df = pd.DataFrame(tweets, columns = ['Content'])
 
