@@ -4,28 +4,34 @@ import plotly.express as px
 import pandas as pd
 import seaborn as sns
 from sentiment_analysis import analyze
+import sys
 
+num_tweets = 10 # The number of tweets to fetch 
+if len(sys.argv) > 1: 
+    num_tweets = int(sys.argv[1])
+print("Analyzing with " + str(num_tweets))
+    
 app = dash.Dash()
 df = sns.load_dataset('titanic')
 
 data_nvidia = pd.DataFrame({
     'Category': ['Good', 'Bad', 'Neutral'],
-    'Value': analyze("nvidia")
+    'Value': analyze("nvidia", num_tweets)
 })
 
 data_adobe = pd.DataFrame({
     'Category': ['Good', 'Bad', 'Neutral'],
-    'Value': analyze("adobe")
+    'Value': analyze("adobe", num_tweets)
 })
 
 data_iFixIt = pd.DataFrame({
     'Category': ['Good', 'Bad', 'Neutral'],
-    'Value': analyze("iFixit")
+    'Value': analyze("iFixit", num_tweets)
 })
 
 data_microsoft = pd.DataFrame({
     'Category': ['Good', 'Bad', 'Neutral'],
-    'Value': analyze("microsoft")
+    'Value': analyze("microsoft", num_tweets)
 })
 
 # Create a pie chart using Plotly Express

@@ -329,10 +329,10 @@ class SentimentAnalyzer:
             
         
  # Trains all the models and tests them 
-def analyze(brandName):
+def analyze(brandName, num_tweets):
     sa = SentimentAnalyzer(brandName, True)
     sa.load_model()
-    tweets = get_recent_tweets(brandName, 1000)
+    tweets = get_recent_tweets(brandName, num_tweets)
     all_tweets = []
     for tweet in tweets: 
         all_tweets.append(tweet[0])
